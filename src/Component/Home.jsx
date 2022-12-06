@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import RecipeModal from "./RecipeModal";
 
-export const Home = () => {
+const Home = () => {
   const [searchValue, setSearchValue] = useState("");
   const [cocktailList, setCocktailList] = useState(null);
   const [placeholder, setPlaceholder] = useState(null);
+  const [viewRecipe, setViewRecipe] = useState(false);
+  const [recipeID, setRecipeID] = useState("");
 
   const doSearch = (searchValue) => {
     fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + searchValue)
@@ -12,11 +15,22 @@ export const Home = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data.drinks);
+        console.table(data.drinks);
         setCocktailList(data.drinks);
         setPlaceholder(searchValue);
         setSearchValue("");
       });
+  };
+
+  const handleClick = (e, id) => {
+    e.preventDefault();
+
+    setViewRecipe(true);
+    setRecipeID(id);
+  };
+
+  const handleClose = () => {
+    setViewRecipe(false);
   };
 
   return (
@@ -34,8 +48,13 @@ export const Home = () => {
           cocktailList.map((data) => (
             <div key={data.idDrink}>
               <p>{data.strDrink}</p>
+              <a href="#" onClick={(e) => handleClick(e, data.idDrink)}>
+                View Recipe
+              </a>
             </div>
           ))}
+
+        {viewRecipe && <RecipeModal recipeId={recipeID} handleClose={() => handleClose()} />}
       </div>
     </div>
   );
