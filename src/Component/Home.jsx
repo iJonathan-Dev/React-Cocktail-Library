@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import RecipeModal from "./RecipeModal";
+import "./Home.scss";
 
 const Home = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -8,7 +9,8 @@ const Home = () => {
   const [viewRecipe, setViewRecipe] = useState(false);
   const [recipeID, setRecipeID] = useState("");
 
-  const doSearch = (searchValue) => {
+  const doSearch = (e, searchValue) => {
+    e.preventDefault();
     fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + searchValue)
       .then((response) => {
         console.log(response);
@@ -19,6 +21,7 @@ const Home = () => {
         setCocktailList(data.drinks);
         setPlaceholder(searchValue);
         setSearchValue("");
+        setViewRecipe(false);
       });
   };
 
@@ -36,11 +39,13 @@ const Home = () => {
   return (
     <div>
       <div className="search-container">
-        <label htmlFor="search-box">Search</label>
-        <input type="text" id="search-box" value={searchValue} onChange={(e) => setSearchValue(e.target.value)} required />
-        <button id="search-button" onClick={() => doSearch(searchValue)}>
-          Search
-        </button>
+        <form onSubmit={(e) => doSearch(e, searchValue)}>
+          <label htmlFor="search-box">Search</label>
+          <input type="text" id="search-box" value={searchValue} onChange={(e) => setSearchValue(e.target.value)} required />
+          <button id="search-button" type="" submit>
+            Search
+          </button>
+        </form>
         {placeholder && <p>Search result for {placeholder}</p>}
         <br />
 
