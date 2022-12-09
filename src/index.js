@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import "./index.scss";
 import CocktailApp from "./Component/CocktailApp";
 import reportWebVitals from "./reportWebVitals";
 

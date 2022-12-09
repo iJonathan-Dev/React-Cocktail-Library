@@ -1,0 +1,57 @@
+@import "../index.scss";
+
+.recipe-modal {
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 50%);
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 500px;
+  padding: 20px;
+  background-color: $accent-color;
+
+  .recipe-name {
+    text-align: center;
+  }
+
+  .container {
+    overflow: scroll;
+    height: calc(100% - 70px);
+    padding-bottom: 20px;
+    box-sizing: border-box;
+
+    &:before {
+      content: "";
+      width: 100%;
+      height: 40px;
+      position: absolute;
+      left: 0;
+      bottom: 20px;
+
+      background: linear-gradient(0deg, $accent-color 20%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    .drink-thumb {
+      display: block;
+      width: 50%;
+      height: auto;
+      margin: auto;
+      border-radius: 5px;
+    }
+  }
+
+  .btn-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 35px;
+
+    &:hover {
+      transform: scale(0.9);
+      cursor: pointer;
+    }
+  }
+}
