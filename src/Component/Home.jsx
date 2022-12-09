@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import RecipeCard from "./RecipeCard";
 import RecipeModal from "./RecipeModal";
 import "./Home.scss";
 
@@ -13,11 +14,11 @@ const Home = () => {
     e.preventDefault();
     fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + searchValue)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         return response.json();
       })
       .then((data) => {
-        console.table(data.drinks);
+        // console.table(data.drinks);
         setCocktailList(data.drinks);
         setPlaceholder(searchValue);
         setSearchValue("");
@@ -25,9 +26,8 @@ const Home = () => {
       });
   };
 
-  const handleClick = (e, id) => {
+  const openRecipeModal = (e, id) => {
     e.preventDefault();
-
     setViewRecipe(true);
     setRecipeID(id);
   };
@@ -40,27 +40,18 @@ const Home = () => {
     <div>
       <div className="search-container">
         <form onSubmit={(e) => doSearch(e, searchValue)}>
-          <label htmlFor="search-box">Search</label>
-          <input type="text" id="search-box" value={searchValue} onChange={(e) => setSearchValue(e.target.value)} required />
+          <label htmlFor="search-box">Search Cocktail Recipe</label>
+          <input type="text" id="search-box" placeholder="Type cocktail name..." value={searchValue} onChange={(e) => setSearchValue(e.target.value)} required />
           <button id="search-button" type="" submit>
             Search
           </button>
         </form>
-        {placeholder && <p>Search result for {placeholder}</p>}
-        <br />
-
-        {cocktailList &&
-          cocktailList.map((data) => (
-            <div key={data.idDrink}>
-              <p>{data.strDrink}</p>
-              <a href="#" onClick={(e) => handleClick(e, data.idDrink)}>
-                View Recipe
-              </a>
-            </div>
-          ))}
-
-        {viewRecipe && <RecipeModal recipeId={recipeID} handleClose={() => handleClose()} />}
+        {placeholder && cocktailList && <p className="placeholder">Search result for '{placeholder}'</p>}
+        {!cocktailList && <p className="placeholder">No result for '{placeholder}'</p>}
       </div>
+      <br />
+      <div className="search-result-container">{cocktailList && cocktailList.map((data) => <RecipeCard data={data} openRecipeModal={(e) => openRecipeModal(e, data.idDrink)} />)}</div>
+      {viewRecipe && <RecipeModal recipeId={recipeID} handleClose={() => handleClose()} />}
     </div>
   );
 };

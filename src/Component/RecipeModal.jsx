@@ -9,11 +9,11 @@ const RecipeModal = ({ handleClose, ...props }) => {
   useEffect(() => {
     fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + recipeID)
       .then((response) => {
-        console.log(response);
+        //console.log(response);
         return response.json();
       })
       .then((data) => {
-        console.table(data.drinks[0]);
+        //console.table(data.drinks[0]);
         setIsLoading(false);
         setRecipe(data.drinks[0]);
       });
@@ -30,7 +30,6 @@ const RecipeModal = ({ handleClose, ...props }) => {
         );
       }
     }
-    console.log(list);
     return list;
   };
 

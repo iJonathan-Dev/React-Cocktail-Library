@@ -1,8 +1,125 @@
 @import "../index.scss";
 
+//Search Box
+.search-container {
+  padding: 5% 0 0 0;
+
+  form {
+    color: white;
+    text-align: center;
+    label {
+      display: block;
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    input {
+      font-size: 20px;
+      width: 300px;
+      padding: 5px 10px;
+      border-radius: 10px 0 0 10px;
+      border: none;
+      vertical-align: middle;
+    }
+
+    button {
+      background-color: $accent-color2;
+      height: 32.5px;
+      border-radius: 0 10px 10px 0;
+      padding: 0 20px;
+      box-sizing: border-box;
+      border: none;
+      color: white;
+      vertical-align: middle;
+      font-weight: bold;
+
+      &:hover {
+        background-color: $accent-color;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .placeholder {
+    margin-top: 40px;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+  }
+}
+
+// Search Result
+.search-result-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-gap: 2em;
+  padding: 0 2em;
+}
+
+// Cocktail Card Result
+.recipe-card {
+  width: 180px;
+  aspect-ratio: 3/4;
+  border-radius: 10px;
+  background-color: $accent-color;
+  display: block;
+  padding: 20px;
+  box-sizing: border-box;
+  margin: auto;
+
+  .card-img-section {
+    width: 100%;
+
+    .recipe-card-drink-thumb {
+      display: block;
+      width: 80%;
+      height: auto;
+      object-fit: contain;
+      margin: auto;
+      border-radius: 100px;
+      border: 5px solid $accent-color2;
+    }
+  }
+
+  .card-content-section {
+    text-align: center;
+
+    .card-title {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 1em;
+      font-weight: bold;
+      margin: 20px 0;
+
+      &:hover {
+        overflow: visible;
+        white-space: normal;
+      }
+    }
+
+    a {
+      display: block;
+      background-color: $accent-color2;
+      padding: 10px 30px;
+      border-radius: 100px;
+      font-size: 0.8em;
+      color: white;
+      text-decoration: none;
+
+      &:hover {
+        transform: scale(0.9);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+//Modal box
 .recipe-modal {
   border-radius: 15px;
-  box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 50%);
+  border: 5px solid $accent-color2;
   position: fixed;
   z-index: 1;
   left: 50%;
@@ -31,7 +148,7 @@
       left: 0;
       bottom: 20px;
 
-      background: linear-gradient(0deg, $accent-color 20%, rgba(255, 255, 255, 0) 100%);
+      background: linear-gradient(0deg, $accent-color 0%, rgba(255, 255, 255, 0) 100%);
     }
 
     .drink-thumb {
