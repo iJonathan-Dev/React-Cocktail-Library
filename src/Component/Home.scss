@@ -1,5 +1,9 @@
 @import "../index.scss";
 
+.content {
+  min-height: calc(100vh - 49px);
+}
+
 //Search Box
 .search-container {
   padding: 5% 0 0 0;
