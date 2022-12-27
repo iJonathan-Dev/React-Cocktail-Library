@@ -5,8 +5,8 @@ The Cocktail App is a simple cocktail search Engine. Just type in any cocktail n
 This app is build using React JS and using API from [TheCocktailDB API](https://www.thecocktaildb.com/api.php)
 
 **Technology used:**  
--React JS
--API from TheCocktailDB
+-React JS  
+-API from TheCocktailDB  
 -Sass Styling
 
 **Installation**
