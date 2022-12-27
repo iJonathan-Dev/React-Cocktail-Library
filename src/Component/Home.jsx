@@ -59,7 +59,7 @@ const Home = () => {
           </button>
         </form>
         {placeholder && cocktailList && <p className="placeholder">Search result for '{placeholder}'</p>}
-        {!cocktailList && <p className="placeholder">No result for '{placeholder}'</p>}
+        {placeholder && !cocktailList && <p className="placeholder">No result for '{placeholder}'</p>}
       </div>
       <br />
       <div className="search-result-container">{cocktailList && cocktailList.map((data) => <RecipeCard data={data} openRecipeModal={(e) => openRecipeModal(e, data.idDrink)} />)}</div>
