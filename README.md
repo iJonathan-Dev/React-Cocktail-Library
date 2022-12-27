@@ -1,4 +1,4 @@
-# Cocktail App
+# Cocktail Library App
 
 The Cocktail App is a simple cocktail search Engine. Just type in any cocktail name and the relevant cocktail recipe list will be displayed.
 
