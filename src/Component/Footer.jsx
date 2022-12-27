@@ -7,7 +7,7 @@ const Footer = () => {
       <p>
         ©{" "}
         <span id="copyright_year">
-          {new Date().getFullYear()} Cocktail App by{" "}
+          {new Date().getFullYear()} Cocktail Library App by{" "}
           <a href="https://www.linkedin.com/in/ijonathan/" target="_blank">
             Ignatius Jonathan
           </a>
