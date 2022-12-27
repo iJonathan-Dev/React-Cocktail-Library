@@ -1,5 +1,6 @@
 import React from "react";
 import Home from "./Home";
+import Footer from "./Footer";
 
 export const CocktailApp = () => {
   return (
@@ -7,6 +8,7 @@ export const CocktailApp = () => {
       <div className="content">
         <Home />
       </div>
+      <Footer />
     </div>
   );
 };
